@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Kafee/Kafee.Api/Kafee.Api.csproj" />
+  <Project Path="Kafee/Kafee.Client/Kafee.Client.csproj" />
+</Solution>
