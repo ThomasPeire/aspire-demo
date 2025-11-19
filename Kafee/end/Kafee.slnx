@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Kafee.AppHost/Kafee.AppHost.csproj" />
+  <Project Path="Kafee.AzureFunctions/Kafee.AzureFunctions.csproj" Id="4d3ea99b-0e21-4e21-a9b0-afc179e1d335" />
+  <Project Path="Kafee.MigrationService/Kafee.MigrationService.csproj" />
+  <Project Path="Kafee.Api/Kafee.Api.csproj" />
+  <Project Path="Kafee.Client/Kafee.Client.csproj" />
+  <Project Path="Kafee.ServiceDefaults/Kafee.ServiceDefaults.csproj" />
+</Solution>

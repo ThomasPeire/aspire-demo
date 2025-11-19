@@ -1,0 +1,24 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>c0c80235-6041-45a6-a7ea-f25810572153</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Kafee.Api\Kafee.Api.csproj" />
+      <ProjectReference Include="..\Kafee.AzureFunctions\Kafee.AzureFunctions.csproj" />
+      <ProjectReference Include="..\Kafee.Client\Kafee.Client.csproj" />
+      <ProjectReference Include="..\Kafee.MigrationService\Kafee.MigrationService.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Hosting.Azure.Functions" Version="13.0.0-preview.1.25560.3" />
+      <PackageReference Include="Aspire.Hosting.Azure.ServiceBus" Version="13.0.0" />
+      <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
+    </ItemGroup>
+
+</Project>
