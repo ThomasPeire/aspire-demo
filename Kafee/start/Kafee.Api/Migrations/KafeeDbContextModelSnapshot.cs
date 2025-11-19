@@ -44,36 +44,6 @@ namespace Kafee.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MenuItems");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a89f6cd7-4693-457b-9009-02205dbbfe45"),
-                            AmountInStock = 20,
-                            Name = "Cola",
-                            Price = 2.80m
-                        },
-                        new
-                        {
-                            Id = new Guid("e4fa19bf-6981-4e50-a542-7c9b26e9ec31"),
-                            AmountInStock = 14,
-                            Name = "Jupiler",
-                            Price = 3.00m
-                        },
-                        new
-                        {
-                            Id = new Guid("17c61e41-3953-42cd-8f88-d3f698869b35"),
-                            AmountInStock = 2,
-                            Name = "Picon",
-                            Price = 5.50m
-                        },
-                        new
-                        {
-                            Id = new Guid("ca79e9b3-312c-43d4-a6f7-27ad7ac842e3"),
-                            AmountInStock = 0,
-                            Name = "Gin-Tonic",
-                            Price = 9.50m
-                        });
                 });
 #pragma warning restore 612, 618
         }
