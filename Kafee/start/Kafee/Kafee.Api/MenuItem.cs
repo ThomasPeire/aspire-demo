@@ -34,8 +34,6 @@ public class MenuItem
     
     public void PickFromStock(int amount)
     {
-        const int resupplyThreshold = 5;
-        
         if (amount <= 0)
         {
             throw new ArgumentOutOfRangeException(nameof(amount), "Deduct amount must be greater than zero.");
@@ -47,10 +45,5 @@ public class MenuItem
         }
         
         AmountInStock -= amount;
-        
-        if (AmountInStock < resupplyThreshold)
-        {
-            //todo
-        }
     }
 }
