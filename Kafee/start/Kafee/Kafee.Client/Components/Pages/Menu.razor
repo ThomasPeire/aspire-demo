@@ -20,57 +20,66 @@ else
 {
     <table class="table">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Order</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Order</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var menuItem in menu)
-            {
-                <tr>
-                    <td>@menuItem.Name</td>
-                    <td>@menuItem.Price</td>
-                    <td>@menuItem.AmountInStock</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" 
-                                @onclick="() => Order(menuItem.Id)"
-                                disabled="@(!menuItem.Available)">
-                            @if (menuItem.Available)
-                            {
-                                <i class="bi bi-cart-plus me-1"></i>
-                                <text>Bestel</text>
-                            }
-                            else
-                            {
-                                <i class="bi bi-x-circle me-1"></i>
-                                <text>Uitverkocht</text>
-                            }
-                        </button>
-                    </td>
-                </tr>
-            }
+        @foreach (var menuItem in menu)
+        {
+            <tr>
+                <td>@menuItem.Name</td>
+                <td>@menuItem.Price</td>
+                <td>@menuItem.AmountInStock</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" 
+                            @onclick="() => Order(menuItem.Id)"
+                            disabled="@(!menuItem.Available && !forceOrderEnabled)">
+                        @if (menuItem.Available || forceOrderEnabled)
+                        {
+                            <i class="bi bi-cart-plus me-1"></i>
+                            <text>Bestel</text>
+                        }
+                        else
+                        {
+                            <i class="bi bi-x-circle me-1"></i>
+                            <text>Uitverkocht</text>
+                        }
+                    </button>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
+    <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" id="forceOrderSwitch" @bind="forceOrderEnabled" />
+        <label class="form-check-label small text-muted" for="forceOrderSwitch">
+            Ignore stock validation
+        </label>
+    </div>
 }
 
 @code {
     private MenuItem[]? menu;
     private string? feedbackMessage;
+    private bool forceOrderEnabled;
 
     protected override async Task OnInitializedAsync()
     {
         menu = await KafeeApi.GetMenuAsync();
     }
     
-    private async Task Order(int menuItemId)
+    private async Task Order(Guid menuItemId)
     {
         try
         {
             await KafeeApi.OrderAsync(menuItemId);
-            feedbackMessage = "Order placed successfully!";
+            feedbackMessage = "Order placed successfully!";        
+            menu = await KafeeApi.GetMenuAsync();
+
         }
         catch (HttpRequestException ex)
         {

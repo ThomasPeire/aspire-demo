@@ -1,16 +1,20 @@
+using Kafee.Api.Data;
 using Kafee.Api.Endpoints;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddProblemDetails();
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<KafeeDbContext>((_, options) =>
+{
+    options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=pre-aspire");
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
@@ -18,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.MapOrderEndpoints();
 app.MapMenuEndpoints();
 
 app.Run();

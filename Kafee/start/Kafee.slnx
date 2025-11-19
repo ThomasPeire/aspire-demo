@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/SolutionFolder/">
+    <File Path="postgres.Dockerfile" />
+  </Folder>
   <Project Path="Kafee/Kafee.Api/Kafee.Api.csproj" />
   <Project Path="Kafee/Kafee.Client/Kafee.Client.csproj" />
 </Solution>

@@ -14,20 +14,20 @@ public class KafeeApiClient(HttpClient httpClient)
             }
         }
 
-        return menu.ToArray();
+        return menu.OrderBy(item => item.Name).ToArray();
     }
 
-    public async Task OrderAsync(int menuItemId, CancellationToken cancellationToken = default)
+    public async Task OrderAsync(Guid menuItemId, CancellationToken cancellationToken = default)
     {
         var request = new OrderRequest(menuItemId);
-        var response = await httpClient.PostAsJsonAsync("/order", request, cancellationToken);
+        var response = await httpClient.PostAsJsonAsync("/order/create", request, cancellationToken);
         response.EnsureSuccessStatusCode();
     }
 }
 
-public record OrderRequest(int Id);
+public record OrderRequest(Guid Id);
 
-public record MenuItem(int Id, string Name, decimal Price, int AmountInStock)
+public record MenuItem(Guid Id, string Name, decimal Price, int AmountInStock)
 {
     public bool Available => AmountInStock > 0;
 }
