@@ -4,7 +4,7 @@
 
 ### Understanding the Starting Point
 
-Before migrating to Aspire, the application uses Docker to run PostgreSQL locally.
+Before migrating to Aspire, the application uses Docker to run containers locally.
 
 **Build the PostgreSQL Docker image:**
 
@@ -12,21 +12,8 @@ Before migrating to Aspire, the application uses Docker to run PostgreSQL locall
 docker build -f postgres.dockerfile -t pre-aspire .
 ```
 
-**Run the PostgreSQL container:**
+**Run the docker compose**
 
-```pwsh
-docker run --name pre-aspire-container -p 5432:5432 pre-aspire
-```
-
-**Create and apply Entity Framework migrations:**
-
-```pwsh
-dotnet ef migrations add init --project .\Kafee.Api
-```
-
-```pwsh
-dotnet ef database update --project .\Kafee.Api
-```
 
 ## Part 2: Adding .NET Aspire Orchestration
 
@@ -250,6 +237,9 @@ The application is now fully migrated to .NET Aspire with:
 - Comprehensive observability through the Aspire Dashboard
 
 # Deploying to Azure
+
+braindump: 
+
 
 open terminal
 

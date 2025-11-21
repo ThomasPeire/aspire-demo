@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
-
-name: kafee
-services:  
-  app:
-    language: dotnet
-    project: ./end/Kafee.AppHost/Kafee.AppHost.csproj
-    host: containerapp
