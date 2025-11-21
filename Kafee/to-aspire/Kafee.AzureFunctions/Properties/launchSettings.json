@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "Kafee.AzureFunctions": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7194",
-      "launchBrowser": false
-    }
-  }
-}
